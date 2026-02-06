@@ -1,0 +1,10 @@
+version: "3"
+
+tasks:
+  default:
+    desc: "List all available tasks"
+    cmds:
+      - task --list
+  up:
+    cmds:
+      - docker compose up --build

@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package faiss;
+
+service FaissService {
+  rpc RetrieveTopK(RetrieveTopKRequest) returns (RetrieveTopKResponse) {}
+}
+
+message RetrieveTopKRequest {
+  repeated int32 embedding = 1;
+  uint32 top_k = 2;
+}
+
+message RetrieveTopKResponse {
+  string model_version = 1;
+  string index_name = 2;
+}

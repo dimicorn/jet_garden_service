@@ -1,0 +1,18 @@
+[project]
+name = "faiss"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "faiss-gpu>=1.7.2",
+    "grpcio>=1.78.0",
+    "grpcio-tools>=1.78.0",
+    "lmdb>=1.7.5",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.0.2",
+    "ruff>=0.15.0",
+]
