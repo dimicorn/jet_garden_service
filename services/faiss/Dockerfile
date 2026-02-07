@@ -12,8 +12,4 @@ RUN pip install --no-cache-dir -r requirements.txt && \
     python -m grpc_tools.protoc -I proto --python_out=src \
     --grpc_python_out=src proto/faiss.proto
 
-EXPOSE 50051
-
-ENV CONFIG_PATH /faiss/config.yaml
-
 CMD ["python", "src/main.py"]

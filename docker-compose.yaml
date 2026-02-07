@@ -10,6 +10,19 @@ services:
       FAISS_HOST: ${FAISS_HOST}
       FAISS_PORT: ${FAISS_PORT}
       FAISS_NUM_WORKERS: ${FAISS_NUM_WORKERS}
-    volumes:
-      - ./config.yaml:/faiss/config.yaml:ro
+    restart: unless-stopped
+
+  core-grpc:
+    build:
+      context: .
+      dockerfile: services/core/Dockerfile
+    container_name: core-grpc
+    ports:
+      - "${CORE_PORT}:${CORE_PORT}"
+    environment:
+      CORE_HOST: ${CORE_HOST}
+      CORE_PORT: ${CORE_PORT}
+      CORE_NUM_WORKERS: ${CORE_NUM_WORKERS}
+    depends_on:
+      - faiss-grpc
     restart: unless-stopped

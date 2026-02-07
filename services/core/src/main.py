@@ -10,10 +10,15 @@ logger = logging.getLogger(__name__)
 
 
 def main() -> None:
-    logging.basicConfig(level=logging.INFO)
+    logging.basicConfig(
+        level=logging.INFO,
+        format="%(asctime)s | %(levelname)s | %(name)s | %(message)s",
+        datefmt="%Y-%m-%d %H:%M:%S",
+    )
     host = os.getenv("CORE_HOST", "0.0.0.0")
     port = int(os.getenv("CORE_PORT", "50052"))
     num_workers = int(os.getenv("CORE_NUM_WORKERS"))
+
     server = grpc.server(ThreadPoolExecutor(max_workers=num_workers))
     add_CoreServiceServicer_to_server(CoreService(), server)
     server.add_insecure_port(f"{host}:{port}")
