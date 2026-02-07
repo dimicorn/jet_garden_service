@@ -7,7 +7,6 @@ services:
     ports:
       - "${FAISS_PORT}:${FAISS_PORT}"
     environment:
-      CONFIG_PATH: /faiss/config.yaml
       FAISS_HOST: ${FAISS_HOST}
       FAISS_PORT: ${FAISS_PORT}
       FAISS_NUM_WORKERS: ${FAISS_NUM_WORKERS}
